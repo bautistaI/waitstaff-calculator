@@ -1,0 +1,159 @@
+*, *:before, *:after {
+  /* Chrome 9-, Safari 5-, iOS 4.2-, Android 3-, Blackberry 7- */
+  -webkit-box-sizing: border-box; 
+
+  /* Firefox (desktop or Android) 28- */
+  -moz-box-sizing: border-box;
+
+  /* Firefox 29+, IE 8+, Chrome 10+, Safari 5.1+, Opera 9.5+, iOS 5+, Opera Mini Anything, Blackberry 10+, Android 4+ */
+  box-sizing: border-box;
+}
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+.error{
+	font-size: 13px;
+	text-align: center;
+	color: red;
+	float: left;
+	margin: 0;
+}
+.wrapper{
+	width: 650px;
+	margin: 20px auto;
+}
+.header{
+	text-align: center;
+}
+.meal-details-wrapper{
+	width: 400px;
+	float: left;
+	margin-right: 30px;
+	border: 2px solid #000;
+	padding: 5px 20px 30px;
+}
+.meal-details-wrapper h2{
+	text-align: center;
+	margin: 0;
+	padding: 5px 0;
+	border-bottom: 2px solid;
+}
+.form-meals-details{
+	overflow: hidden;
+	margin: 10px 0;
+}
+.meal-details label{
+	float: left;
+	line-height: 2.5;
+	padding-left: 25px;
+	clear: both;
+}
+.meal-details input{
+	width: 100px;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 2px solid black;
+	float: right;
+}
+.btn-submit-cancel{
+	margin-left: 30px;
+	margin-top: 220px;
+	width: 200px;
+	clear: both;
+}
+.btn-submit{
+	position: relative;
+	margin: 5px;
+	background: green;
+	border: none;
+	color: #FFF;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.btn-cancel{
+	position: relative;
+	background: #ccc;
+	margin: 5px;
+	border: none;
+	color: #000;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.btn-reset{
+	float: right;
+	position: relative;
+	right: -100px;
+	background: #ccc;
+	margin: 15px;
+	border: none;
+	color: #000;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.customer-charges{
+	width: 200px;
+	float: right;
+	border: 2px solid #000;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+.customer-charges h2{
+	font-size: 17px;
+	text-align: center;
+	border-bottom: 2px solid #000;
+	padding-bottom: 10px;
+	margin: 0;
+}
+.customer-charges p{
+	font-size: 14px;
+}
+.customer-charges p:nth-child(3){
+	border-bottom: 2px solid #000;
+	padding-bottom: 10px;
+}
+.customer-charges p:nth-child(4){
+	font-weight: bold;
+}
+.earnings-info{
+	width: 200px;
+	float: right;
+	border: 2px solid #000;
+	padding: 10px;
+}
+.earnings-info h2{
+	font-size: 17px;
+	text-align: center;
+	border-bottom: 2px solid #000;
+	padding-bottom: 10px;
+	margin: 0;
+}
+.earnings-info p{
+	font-size: 14px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+
+
+
