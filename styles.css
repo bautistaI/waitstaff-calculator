@@ -31,12 +31,19 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+button[disabled]{
+	opacity: 0.3;
+}
 .error{
 	font-size: 13px;
 	text-align: center;
 	color: red;
 	float: left;
 	margin: 0;
+	clear: both;
+	position: relative;
+	top: -12px;
+	left: 26px;
 }
 .wrapper{
 	width: 650px;
