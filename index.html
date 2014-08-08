@@ -11,8 +11,7 @@
 	<div class="wrapper">
 		<div class="header">
 			<h1>Waitstaff Calculator</h1>
-		</div><!--@end header -->
-		
+		</div><!--@end header -->		
 		<!-- MEAL DETAILS -->
 		<section class="meal-details-wrapper">
 			<h2>Enter the Meal Details</h2>
@@ -38,22 +37,22 @@
 		</section><!--@end meal details -->	
 
 		<!-- CUSTOMER CHARGES -->
-		<section class="customer-charges">
+		<section class="customer-charges" ng-controller="ChargesCtrl">
 			<h2>Customer Charges</h2>
 			<p>Subtotal: <span >{{subTotal | currency}}</span></p>
-			<p>Tip: <span>{{tipPercentage | currency}}</span></p>
+			<p>Tip: <span>{{tip | currency}}</span></p>
 			<p>Total: <span>{{totalCharges | currency}}</span></p>
 		</section><!--@end customer charges -->
 
 		<!-- EARNINGS INFO -->
-		<section class="earnings-info">
+		<section class="earnings-info" ng-controller="EarningsCtrl">
 			<h2>My Earnings Info</h2>
 			<p>Tip Total: <span>{{tipTotal | currency}}</span></p>
-			<p ng-controller="mealCounter">Meal Count: <span ng-model="mealCounter">{{mealCounter}}</span></p>
+			<p>Meal Count: {{mealCounter}}</p>
 			<p>Ave. Tip per Meal: <span>{{averageTip | currency}}</span></p>
 		</section><!--@end earnings info -->
 		
-		<button class="btn-reset" type="reset" ng-click="startOver(myForm)">Reset</button>
+		<button class="btn-reset" type="reset" ng-click="startOver()">Reset</button>
 		
 
 	</div><!-- @end wrapper -->
