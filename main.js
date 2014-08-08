@@ -1,7 +1,7 @@
 angular.module('myApp', [])
   .controller('MealsCtrl', function($scope){
     "use strict";
-    
+
     $scope.submit = function(){
       var validForm          = $scope.myForm.$valid;
       var validMealPrice     = $scope.myForm.myMealPrice.$dirty;
@@ -27,6 +27,10 @@ angular.module('myApp', [])
       }
     };
 
+    // resetForm only works within the scope of the Form, to broadcast this function to other
+    // scopes like the reset button with ng-click=('startOver') which is outside the scope of
+    // ng-click=('resetForm') we'll need the startOver function to broadcast the functionality of
+    // $scope.resetForm
     $scope.resetForm = function(){      
         $scope.myForm.$setPristine();
         $scope.myForm.myMealPrice.$setPristine();
@@ -35,50 +39,65 @@ angular.module('myApp', [])
         $scope.myForm.myTaxRate.$error.number = '';
         $scope.myForm.myTipPercentage.$setPristine();
         $scope.myForm.myTipPercentage.$error.number = '';
+        $scope.data.mealPrice = undefined;
+        $scope.data.taxRate = undefined;
+        $scope.data.tipPercentage = undefined;
     };
 
+    // startOver broadcasts the resetForm function above to outside controller
     $scope.startOver = function(){
-      $scope.myForm.$setPristine();
       $scope.$broadcast('reset');
       $scope.resetForm();
     };
-  })
+  
+  }) 
+  // ===================== @ends MealsCtrl
+  
 
   .controller('ChargesCtrl', function($scope){
+    "use strict";
+
+    // setting default values
     $scope.subTotal = 0.00;
     $scope.tip = 0.00;
     $scope.totalCharges = 0.00;
 
+    // listening for the resetForm alias "reset" by the startOver function
     $scope.$on('reset', function(){
       $scope.subTotal = 0.00;
       $scope.tip = 0.00;
       $scope.totalCharges = 0.00;
     });
 
+    // updates customer charges based on the if statement on the submit function
     $scope.$on('updateEarning', function(evt, tip, subTotal){
       $scope.subTotal = subTotal;
       $scope.tip = tip;
       $scope.totalCharges = tip + subTotal; 
     });
   })
-
+  
   
   .controller('EarningsCtrl', function($scope){
+    "use strict";
+
+     // setting default values
     $scope.tipTotal = 0.00;
     $scope.mealCounter = 0;
     $scope.averageTip = 0.00;
     
+    // listening for the resetForm alias "reset" by the startOver function
     $scope.$on('reset', function(){
       $scope.tipTotal = 0.00;
       $scope.averageTip = 0.00;
       $scope.mealCounter = 0;
     });
 
+    // updates customer charges based on the if statement on the submit function
     $scope.$on('updateEarning', function(evt, tip){
       $scope.tipTotal += tip;
       $scope.mealCounter += 1;
       $scope.averageTip = $scope.tipTotal / $scope.mealCounter;
     });
-  })
-
+  });
   

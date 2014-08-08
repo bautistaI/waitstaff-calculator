@@ -69,6 +69,14 @@ button[disabled]{
 	overflow: hidden;
 	margin: 10px 0;
 }
+.form-meals-details span{
+	position: relative;
+	left: 90px;
+	line-height: 2.5;
+}
+.form-meals-details .tax{
+	left: 136px;
+}
 .meal-details label{
 	float: left;
 	line-height: 2.5;
@@ -84,8 +92,8 @@ button[disabled]{
 	float: right;
 }
 .btn-submit-cancel{
-	margin-left: 30px;
-	margin-top: 220px;
+	margin-left: 90px;
+	margin-top: 190px;
 	width: 200px;
 	clear: both;
 }
@@ -110,7 +118,8 @@ button[disabled]{
 .btn-reset{
 	float: right;
 	position: relative;
-	right: -100px;
+	right: -330px;
+	top: 60px;
 	background: #ccc;
 	margin: 15px;
 	border: none;
@@ -135,12 +144,19 @@ button[disabled]{
 .customer-charges p{
 	font-size: 14px;
 }
+.customer-charges .tip{
+	position: relative;
+	left: 32px;
+}
 .customer-charges p:nth-child(3){
 	border-bottom: 2px solid #000;
 	padding-bottom: 10px;
 }
 .customer-charges p:nth-child(4){
 	font-weight: bold;
+}
+.customer-charges .total-charges{
+	margin-left: 16px;
 }
 .earnings-info{
 	width: 200px;
@@ -157,7 +173,6 @@ button[disabled]{
 }
 .earnings-info p{
 	font-size: 14px;
-	text-align: right;
 	padding-right: 10px;
 }
 
