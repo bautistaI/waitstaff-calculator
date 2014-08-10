@@ -20,9 +20,10 @@ angular.module('myApp', [])
 
       // If the form is valid, provide the calculated values
       if(validForm && validMealPrice && validTaxRate && validTipPercentage){
-        $scope.subTotal = subTotal;
-        $scope.totalCharges = tip + subTotal;      
-        $scope.tip = tip;
+        // don't think we need this since it is already being applied inside the ChargesCtrl
+        // $scope.subTotal = subTotal;    
+        // $scope.tip = tip;
+        // $scope.totalCharges = tip + subTotal;  
         $scope.$broadcast('updateEarning', tip, subTotal);
       }
     };
