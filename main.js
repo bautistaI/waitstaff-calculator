@@ -1,4 +1,27 @@
-angular.module('myApp', [])
+angular.module('myApp', ['ngRoute'])
+  .config(function($routeProvider){
+    $routeProvider
+    .when('/home', {
+      templateUrl: 'views/home.html',
+      controller: 'HomeCtrl'
+    })
+    .when('/new_meal', {
+      templateUrl: 'views/new_meal.html',
+      controller: 'MealsCtrl'
+    })
+    .when('/my_earnings', {
+      templateUrl: 'views/my_earnings.html',
+      controller: 'EarningsCtrl'
+    })
+    .otherwise({
+      redirectTo: '/home'
+    });
+  })
+
+
+  .controller('HomeCtrl', function($scope){})
+
+
   .controller('MealsCtrl', function($scope){
     "use strict";
 
@@ -47,7 +70,7 @@ angular.module('myApp', [])
       $scope.resetForm();
     };
   
-  }) 
+  })
   // ===================== @ends MealsCtrl
   
 
@@ -70,7 +93,7 @@ angular.module('myApp', [])
     $scope.$on('updateEarning', function(evt, tip, subTotal){
       $scope.subTotal = subTotal;
       $scope.tip = tip;
-      $scope.totalCharges = tip + subTotal; 
+      $scope.totalCharges = tip + subTotal;
     });
   })
   
@@ -90,7 +113,7 @@ angular.module('myApp', [])
       $scope.mealCounter = 0;
     });
 
-    // updates customer charges based on the if statement on the submit function
+   
     $scope.$on('updateEarning', function(evt, tip){
       $scope.tipTotal += tip;
       $scope.mealCounter += 1;

@@ -1,0 +1,33 @@
+<div ng-controller="MealsCtrl">
+	<!-- MEAL DETAILS -->
+	<section class="meal-details-wrapper">
+		<h2>Enter the Meal Details</h2>
+		<form class="form-meals-details" ng-submit='submitted=true; submit(myForm);' name="myForm" novalidate>
+				<div class="meal-details">
+					<label for="mealprice">Base Meal Price:<span>$</span></label>
+					<input type="number" placeholder="0.00" ng-model="data.mealPrice" name="myMealPrice" required="">
+					<p class="error clearfix" ng-show="myForm.myMealPrice.$error.number">Please enter a Number</p>
+
+					<label for="taxrate">Tax Rate:<span class="tax">%</span></label>
+					<input type="number" placeholder="0" ng-model="data.taxRate" name="myTaxRate" required="">
+					<p class="error clearfix" ng-show="myForm.myTaxRate.$error.number">Please enter a Number</p>
+
+					<label for="tippercentage">Tip Percentage:<span>%</span></label>
+					<input type="number" placeholder="0" ng-model="data.tipPercentage"  name="myTipPercentage" required="">
+					<p class="error clearfix" ng-show="myForm.myTipPercentage.$error.number">Please enter a Number</p>
+				</div>
+				<div class="btn-submit-cancel">
+					<button class="btn-submit" type="submit" ng-disabled="!data.mealPrice || !data.taxRate || !data.tipPercentage">Submit</button>
+					<button class="btn-cancel" type="reset" ng-click="resetForm()">Cancel</button>
+				</div>
+		</form>
+	</section><!--@end meal details -->	
+
+	<!-- CUSTOMER CHARGES -->
+	<section class="customer-charges" ng-controller="ChargesCtrl">
+		<h2>Customer Charges</h2>
+			<p>Subtotal: <span >{{subTotal | currency}}</span></p>
+			<p>Tip: <span class="tip">{{tip | currency}}</span></p>
+			<p>Total: <span class="total-charges">{{totalCharges | currency}}</span></p>
+	</section><!--@end customer charges -->
+</div>

@@ -1,0 +1,10 @@
+<!-- EARNINGS INFO -->
+<section class="earnings-info" ng-controller="EarningsCtrl">
+	<h2>My Earnings Info</h2>
+	<p>Tip Total: <span>{{tipTotal | currency}}</span></p>
+	<p>Meal Count: {{mealCounter}}</p>
+	<p>Ave. Tip per Meal: <span>{{averageTip | currency}}</span></p>
+</section><!--@end earnings info -->
+
+<!-- RESET ALL FIELDS -->
+<button class="btn-reset" type="reset" ng-click="startOver()">Reset</button>
