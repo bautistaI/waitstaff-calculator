@@ -3,7 +3,6 @@ angular.module('myApp', ['ngRoute'])
     $routeProvider
     .when('/home', {
       templateUrl: 'views/home.html',
-      controller: 'HomeCtrl'
     })
     .when('/new_meal', {
       templateUrl: 'views/new_meal.html',
@@ -18,11 +17,12 @@ angular.module('myApp', ['ngRoute'])
     });
   })
 
+// find a way to link the MealsCtrl and the EarningsCtrl 
+  .factory('updateService', function($rootScope){
 
-  .controller('HomeCtrl', function($scope){})
+  })
 
-
-  .controller('MealsCtrl', function($scope){
+  .controller('MealsCtrl', function($scope, updateService){
     "use strict";
 
     $scope.submit = function(){
@@ -39,8 +39,6 @@ angular.module('myApp', ['ngRoute'])
       // calculate individual values for subtotal and total charges so it can be render on customer charges section
       var subTotal = mealPrice * taxRate + mealPrice;
      
-
-
       // If the form is valid, provide the calculated values
       if(validForm && validMealPrice && validTaxRate && validTipPercentage){
         $scope.$broadcast('updateEarning', tip, subTotal);
@@ -51,7 +49,7 @@ angular.module('myApp', ['ngRoute'])
     // scopes like the reset button with ng-click=('startOver') which is outside the scope of
     // ng-click=('resetForm') we'll need the startOver function to broadcast the functionality of
     // $scope.resetForm
-    $scope.resetForm = function(){      
+    $scope.resetForm = function(){
         $scope.myForm.$setPristine();
         $scope.myForm.myMealPrice.$setPristine();
         $scope.myForm.myMealPrice.$error.number = '';
@@ -98,10 +96,10 @@ angular.module('myApp', ['ngRoute'])
   })
   
   
-  .controller('EarningsCtrl', function($scope){
+  .controller('EarningsCtrl', function($scope, updateService){
     "use strict";
-
-     // setting default values
+    console.log();
+    // setting default values
     $scope.tipTotal = 0.00;
     $scope.mealCounter = 0;
     $scope.averageTip = 0.00;
@@ -113,7 +111,6 @@ angular.module('myApp', ['ngRoute'])
       $scope.mealCounter = 0;
     });
 
-   
     $scope.$on('updateEarning', function(evt, tip){
       $scope.tipTotal += tip;
       $scope.mealCounter += 1;
