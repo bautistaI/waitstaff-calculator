@@ -49,16 +49,20 @@ angular.module('myApp', ['ngRoute'])
 		var validTaxRate       = $scope.myForm.myTaxRate.$dirty;
 		var validTipPercentage = $scope.myForm.myTipPercentage.$dirty;
 
-		// create variables to hold scope for meal price, tax rate and tip percentage directly from the Form
-		var mealPrice = $scope.data.mealPrice;
-		var taxRate = $scope.data.taxRate / 100;
-		var tip = $scope.data.tipPercentage / 100 * mealPrice;
-
-		// calculate individual values for subtotal and total charges so it can be render on customer charges section
-		var subTotal = mealPrice * taxRate + mealPrice;
-
 		// If the form is valid, provide the calculated values
 		if(validForm && validMealPrice && validTaxRate && validTipPercentage){
+			// create variables to hold scope for meal price, tax rate and tip percentage directly from the Form
+			var mealPrice = $scope.data.mealPrice;
+			var taxRate = $scope.data.taxRate / 100;
+			var tip = $scope.data.tipPercentage / 100 * mealPrice;
+
+			// calculate individual values for subtotal and total charges so it can be render on customer charges section
+			var subTotal = mealPrice * taxRate + mealPrice;
+			
+			$scope.subTotal = subTotal;
+			$scope.tip = tip;
+			$scope.totalCharges = tip + subTotal;
+			
 			earningService.updateEarning(tip, subTotal);
 		}
 	};
@@ -76,20 +80,12 @@ angular.module('myApp', ['ngRoute'])
 		$scope.data.tipPercentage = undefined;
 	};	
 
-    
 	// setting default values
 	$scope.subTotal = 0.00;
 	$scope.tip = 0.00;
 	$scope.totalCharges = 0.00;
 
-	
 
-	// updates customer charges based on the if statement on the submit function
-	$scope.$on('updateEarning', function(evt, tip, subTotal){
-		$scope.subTotal = subTotal;
-		$scope.tip = tip;
-		$scope.totalCharges = tip + subTotal;
-	});
 
 })
 
@@ -100,7 +96,7 @@ angular.module('myApp', ['ngRoute'])
 	$scope.tipTotal = my_earnings.totalTip;
 	$scope.mealCounter = my_earnings.mealCount;
 	$scope.averageTip = my_earnings.averageTip;
-	
+
 	// startOver broadcasts the resetForm function above to outside controller
 	$scope.startOver = function(){
 		earningService.reset();
