@@ -2,7 +2,7 @@ angular.module('myApp', ['ngRoute'])
   .config(function($routeProvider){
     $routeProvider
     .when('/home', {
-      templateUrl: 'views/home.html',
+      templateUrl: 'views/home.html'
     })
     .when('/new_meal', {
       templateUrl: 'views/new_meal.html',
@@ -18,11 +18,20 @@ angular.module('myApp', ['ngRoute'])
   })
 
 // find a way to link the MealsCtrl and the EarningsCtrl 
-  .factory('updateService', function($rootScope){
+  // .factory('updateService', function($rootScope){
+  //   return{
+  //     getData: function(){
+  //       console.log('data from factory');
+  //       subTotal: 0.00,
+  //       tip: 0.00,
+  //       totalCharges: 0.00,
+  //       calculateEarnings: 
+  //     }
+  //   };
+  // })
 
-  })
 
-  .controller('MealsCtrl', function($scope, updateService){
+  .controller('MealsCtrl', function($scope, $rootScope ){
     "use strict";
 
     $scope.submit = function(){
@@ -41,14 +50,10 @@ angular.module('myApp', ['ngRoute'])
      
       // If the form is valid, provide the calculated values
       if(validForm && validMealPrice && validTaxRate && validTipPercentage){
-        $scope.$broadcast('updateEarning', tip, subTotal);
+        $rootScope.$broadcast('updateEarning', tip, subTotal);
       }
     };
 
-    // resetForm only works within the scope of the Form, to broadcast this function to other
-    // scopes like the reset button with ng-click=('startOver') which is outside the scope of
-    // ng-click=('resetForm') we'll need the startOver function to broadcast the functionality of
-    // $scope.resetForm
     $scope.resetForm = function(){
         $scope.myForm.$setPristine();
         $scope.myForm.myMealPrice.$setPristine();
@@ -64,7 +69,7 @@ angular.module('myApp', ['ngRoute'])
 
     // startOver broadcasts the resetForm function above to outside controller
     $scope.startOver = function(){
-      $scope.$broadcast('reset');
+      $rootScope.$broadcast('reset');
       $scope.resetForm();
     };
   
@@ -89,6 +94,7 @@ angular.module('myApp', ['ngRoute'])
 
     // updates customer charges based on the if statement on the submit function
     $scope.$on('updateEarning', function(evt, tip, subTotal){
+      console.log('earning', tip);
       $scope.subTotal = subTotal;
       $scope.tip = tip;
       $scope.totalCharges = tip + subTotal;
@@ -96,11 +102,11 @@ angular.module('myApp', ['ngRoute'])
   })
   
   
-  .controller('EarningsCtrl', function($scope, updateService){
+  .controller('EarningsCtrl', function($scope){
     "use strict";
-    console.log();
+
     // setting default values
-    $scope.tipTotal = 0.00;
+    $scope.tipTotal = 1000.00;
     $scope.mealCounter = 0;
     $scope.averageTip = 0.00;
     
@@ -111,7 +117,8 @@ angular.module('myApp', ['ngRoute'])
       $scope.mealCounter = 0;
     });
 
-    $scope.$on('updateEarning', function(evt, tip){
+     $scope.$on('updateEarning', function(evt, tip, subTotal){
+      console.log('object', tip);
       $scope.tipTotal += tip;
       $scope.mealCounter += 1;
       $scope.averageTip = $scope.tipTotal / $scope.mealCounter;

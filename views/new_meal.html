@@ -1,4 +1,4 @@
-<div ng-controller="MealsCtrl">
+<div>
 	<!-- MEAL DETAILS -->
 	<section class="meal-details-wrapper">
 		<h2>Enter the Meal Details</h2>
@@ -24,10 +24,10 @@
 	</section><!--@end meal details -->	
 
 	<!-- CUSTOMER CHARGES -->
-	<section class="customer-charges" ng-controller="ChargesCtrl">
+</div>
+<section class="customer-charges">
 		<h2>Customer Charges</h2>
 			<p>Subtotal: <span >{{subTotal | currency}}</span></p>
 			<p>Tip: <span class="tip">{{tip | currency}}</span></p>
 			<p>Total: <span class="total-charges">{{totalCharges | currency}}</span></p>
 	</section><!--@end customer charges -->
-</div>
