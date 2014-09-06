@@ -1,7 +1,7 @@
 angular.module('myApp', ['ngRoute', 'ngAnimate'])
 .config(function($routeProvider){
 	$routeProvider
-	.when('/home', {
+	.when('/', {
 		templateUrl: 'views/home.html'
 	})
 	.when('/new_meal', {
@@ -16,7 +16,7 @@ angular.module('myApp', ['ngRoute', 'ngAnimate'])
     template : '<p>Error Page Not Found</p>'
 	})
 	.otherwise({
-		redirectTo: '/error'
+		redirectTo: '/'
 	});
 })
 .run(function($rootScope, $location, $timeout) {
