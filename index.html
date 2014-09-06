@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="styles.css">
 </head>
-<body ng-cloak class="ng-cloak">
+<body ng-cloak class="ng-cloak" ng-class="{loading: isLoading}">
 	<div class="wrapper">
 		<div class="header">
 			<h1>Waitstaff Calculator</h1>
@@ -16,11 +16,15 @@
 			<a href="#/my_earnings">My Earnings</a>
 		</div><!--@end header -->		
 
-	<div ng-view></div>
+	<div class="animate-view-container">
+		<div ng-view class="animate-view"></div>
+	</div>
+	
 
 	</div><!-- @end wrapper -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
 <script src="angular-route.min.js"></script>
+<script src="angular-animate.min.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
