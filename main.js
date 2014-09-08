@@ -19,7 +19,7 @@ angular.module('myApp', ['ngRoute', 'ngAnimate'])
     template : '<p>Error Page Not Found</p>'
 	})
 	.otherwise({
-		redirectTo: '/error'
+		redirectTo: '/'
 	});
 })
 .run(function($rootScope, $location, $timeout) {
