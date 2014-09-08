@@ -8,18 +8,21 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body ng-cloak class="ng-cloak" ng-class="{loading: isLoading}">
-	<div class="wrapper">
+	<div class="wrapper" ng-controller="MainCtrl">
 		<div class="header">
-			<h1>Waitstaff Calculator</h1>
-			<a href="#/home">Home</a>
-			<a href="#/new_meal">New Meal</a>
-			<a href="#/my_earnings">My Earnings</a>
+			<h1 class="title">Waitstaff Calculator</h1>
+			<a href="#/home" ng-class="{active: $route.current.activetab == 'home'}">Home</a>
+			<a href="#/new_meal" ng-class="{active: $route.current.activetab == 'newmeal'}">New Meal</a>
+			<a href="#/my_earnings" ng-class="{active: $route.current.activetab == 'myearnings'}">My Earnings</a>
 		</div><!--@end header -->		
 
 	<div class="animate-view-container">
 		<div ng-view class="animate-view"></div>
 	</div>
 	
+	<div id="logo" title="thank you for your tip">
+    <img src="logo.png" alt="waitress">
+  </div>
 
 	</div><!-- @end wrapper -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
